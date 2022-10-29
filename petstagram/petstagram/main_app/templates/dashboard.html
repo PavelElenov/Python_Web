@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load pets %}
+{% block content %}
+<div class="container">
+    {% have_pets as hp %}
+
+
+    {% if not hp %}
+    <h1 class='text-center'>No pet photos yet</h1>
+    <div class=" row d-flex justify-content-center align-content-center">
+        <!-- Button to Add a new Photo -->
+        <a href="#" class="btn btn-lg btn-secondary row align-self-baseline">Add Photo</a>
+    </div>
+
+    {% else %}
+    <h1 class='text-center'>All Pet Photos</h1>
+    <div class="container mb-5">
+        <div class="row mb-5">
+
+            {% for pets_photo in pets_photo %}
+                <div class="card ml-3 mb-3" style="width: 18rem;">
+                    <!-- Image -->
+                    <img src="{{ pets_photo.photo }}"
+                         class="card-img-top" alt="Photo description">
+                    <div class="card-body">
+                        {% for pet in pets_photo.tagged_pets.all %}
+                            <h5 class="card-title">{{ pet.name }}</h5>
+                            {% if pets_photo.description %}
+                            <h6>Description: {{ pets_photo.description }}</h6>
+                            {% endif %}
+                            <h7>Date: {{ pets_photo.date_and_time_of_publication }}</h7>
+                            <h8>Likes: {{ pets_photo.likes }}</h8>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

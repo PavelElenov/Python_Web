@@ -1,0 +1,26 @@
+{% extends 'home_page.html' %}
+{% block content %}
+<form method="post" action="{% url 'create employee' %}">
+    <div>
+        <input type="text" name="first name" placeholder="First Name"/>
+        </div>
+    <p>
+
+    </p>
+        <div>
+        <input type="text" name="last name" placeholder="Last Name"/>
+        </div>
+    <p></p>
+    <div>
+        <input type="number" name="age" placeholder="Age"/>
+        </div>
+    <p>
+
+    </p>
+        <div>
+        <input type="text" name="email" placeholder="Email"/>
+        </div>
+    <p></p>
+       <button>Save</button>
+   </form>
+{% endblock %}

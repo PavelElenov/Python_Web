@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Profile Information -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="d-flex">
+            <div class="d-inline p-2 w-50">
+                <img src="//petstagram//images//{{ profile.picture }}" alt="Image not found"/>
+                <div>{{ profile.picture }}</div>
+            </div>
+            <div class="d-inline p-2 w-50">
+                <div class="d-flex flex-column">
+                    <h5><u>Name:</u> {{ profile.first_name}} {{ profile.last_name }}</h5>
+                    <!-- If Date of Birth -->
+                    <h5><u>Birthdate:</u> {{ profile.date_of_birth }}</h5>
+                    <!-- If Email -->
+                    <h5><u>Email:</u> {{ profile.email}}</h5>
+                    <!-- If Gender is Chosen -->
+                    <h5><u>Gender:</u> {{ profile.gender }}</h5>
+                    {% if profile.description %}
+                        <h5><u>Description:</u> {{ profile.description}}</h5>
+                    {% endif %}
+                </div>
+                <p class="mt-2">Total Images: {{ total_pets_photo }}</p>
+                <p class="mt-2">Total Likes: {{ total_likes }}</p>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete user' profile.id%}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Profile Information -->
+
+{#{% if pets %}#}
+{#<h2 class="text-center">My Pets</h2>#}
+{#<div class="container mb-4">#}
+{#    <div class="d-flex justify-content-start mb-5">#}
+{#        <!-- Info for First Pet -->#}
+{#        <div style="width: 18rem;">#}
+{#            <h5>Andrew</h5>#}
+{#            <p class="mt-2">Age: 3</p>#}
+{#            <a href="#" class="btn btn-primary">Edit</a>#}
+{#            <a href="#" class="btn btn-danger">Delete</a>#}
+{#        </div>#}
+{##}
+{#        <!-- Info for Second Pet -->#}
+{#        <div style="width: 18rem;">#}
+{#            <h5>Otto</h5>#}
+{#            <a href="#" class="btn btn-primary">Edit</a>#}
+{#            <a href="#" class="btn btn-danger">Delete</a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{#   {% endif %}#}
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'home_page.html' %}
+{% block content %}
+    <form method="post" action="{% url 'create department' %}">
+        {{ department_form }}
+        <button>Save</button>
+    </form>
+{% endblock %}
